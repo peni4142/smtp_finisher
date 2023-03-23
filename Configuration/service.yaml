@@ -1,0 +1,12 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  peni4142\smtp_finisher\:
+    resource: '../Classes/*'
+
+  peni4142\smtp_finisher\Finisher\SmtpFinisher:
+    public: true
+

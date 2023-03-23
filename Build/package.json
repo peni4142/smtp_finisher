@@ -1,9 +1,9 @@
 {
-  "name": "peer-nissen-smtp-finisher",
+  "name": "peni4142-smtp_finisher",
   "description": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/peni4142/smtp-finisher"
+    "url": "https://github.com/peni4142/smtp_finisher"
   },
   "homepage": "https://peni4142.de",
   "author": "peni4142",

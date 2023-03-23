@@ -1,0 +1,133 @@
+TYPO3:
+  CMS:
+    Form:
+      prototypes:
+        standard:
+          formElementsDefinition:
+            Form:
+              formEditor:
+                editors:
+                  900:
+                    # Extend finisher drop down
+                    selectOptions:
+                      35:
+                        value: 'SmtpFinisher'
+                        label: 'SMTP Finisher'
+                propertyCollections:
+                  finishers:
+                     # add finisher fields
+                     25:
+                        identifier: 'SmtpFinisher'
+                        editors:
+                           100:
+                             # add expandable header area
+                             identifier: header
+                             label: "SMTP Finisher"
+                             templateName: Inspector-CollectionElementHeaderEditor
+                           105:
+                             # add remove button
+                             identifier: removeButton
+                             templateName: Inspector-RemoveElementEditor
+                           110:
+                             # add a field defined as a TextEditor
+                             identifier: 'smtpPort'
+                             templateName: 'Inspector-TextEditor'
+                             label: 'SMTP Port'
+                             propertyPath: 'options.customField1'
+                             propertyValidators:
+                               10: 'NotEmpty'
+                           120:
+                             # add a field defined as a TextEditor
+                             identifier: 'smtpServer'
+                             templateName: 'Inspector-TextEditor'
+                             label: 'SMTP Server'
+                             propertyPath: 'options.customField2'
+                             propertyValidators:
+                               10: 'NotEmpty'
+                           130:
+                             # add a field defined as a TextEditor
+                             identifier: 'username'
+                             templateName: 'Inspector-TextEditor'
+                             label: 'Username'
+                             propertyPath: 'options.customField3'
+                             propertyValidators:
+                               10: 'NotEmpty'
+                           140:
+                             # add a field defined as a TextEditor
+                             identifier: 'password'
+                             templateName: 'Inspector-TextEditor'
+                             label: 'Password'
+                             propertyPath: 'options.customField4'
+                             propertyValidators:
+                               10: 'NotEmpty'
+                           150:
+                             # add a field defined as a TextEditor
+                             identifier: 'senderAddress'
+                             templateName: 'Inspector-TextEditor'
+                             label: 'Sender Address'
+                             propertyPath: 'options.customField5'
+                             propertyValidators:
+                               10: 'NotEmpty'
+                           160:
+                             # add a field defined as a TextEditor
+                             identifier: 'subject'
+                             templateName: 'Inspector-TextEditor'
+                             label: 'Subject'
+                             propertyPath: 'options.customField6'
+                             propertyValidators:
+                               10: 'NotEmpty'
+                           170:
+                             # add a field defined as a TextEditor
+                             identifier: 'htmlBody'
+                             templateName: 'Inspector-TextEditor'
+                             label: 'HTML Body'
+                             propertyPath: 'options.customField7'
+                             propertyValidators:
+                               10: 'NotEmpty'
+                           180:
+                             # add a field defined as a TextEditor
+                             identifier: 'altBody'
+                             templateName: 'Inspector-TextEditor'
+                             label: 'Alt Body'
+                             propertyPath: 'options.customField8'
+                             propertyValidators:
+                               10: 'NotEmpty'
+                           190:
+                             # add a field defined as a TextEditor
+                             identifier: 'recipent'
+                             templateName: 'Inspector-TextEditor'
+                             label: 'Recipent'
+                             propertyPath: 'options.customField9'
+                             propertyValidators:
+                               10: 'NotEmpty'
+                           220:
+                             # add another TextEditor
+                             identifier: 'email'
+                             templateName: 'Inspector-TextEditor'
+                             label: 'Subscribers email'
+                             propertyPath: 'options.email'
+                             enableFormelementSelectionButton: true
+                             propertyValidators:
+                               10: 'NotEmpty'
+                               20: 'FormElementIdentifierWithinCurlyBracesInclusive'
+          finishersDefinition:
+            SmtpFinisher:
+              implementationClassName: 'peni4142\smtp_finisher\Domain\Finishers\SmtpFinisher'
+              formEditor:
+                iconIdentifier: form-finisher
+                label: 'SMTP Finisher'
+                predefinedDefaults:
+                  options:
+                    smtpPort: '587'
+              # displayed when overriding finisher settings
+              FormEngine:
+                label: 'SMTP Finisher'
+                elements:
+                  customField:
+                    label: 'SMTP Field'
+                    config:
+                      type: 'text'
+                  email:
+                    label: 'Subscribers email'
+                    config:
+                      type: 'text'

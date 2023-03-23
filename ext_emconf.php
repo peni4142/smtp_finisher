@@ -4,7 +4,7 @@
  * Extension Manager/Repository config file for ext "smtp_finisher".
  */
 $EM_CONF[$_EXTKEY] = [
-    'title' => 'SMTP-Finisher',
+    'title' => 'smtp_finisher',
     'description' => '',
     'category' => 'templates',
     'constraints' => [

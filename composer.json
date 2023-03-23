@@ -1,5 +1,5 @@
 {
-    "name": "peer-nissen/smtp-finisher",
+    "name": "peni4142/smtp_finisher",
     "type": "typo3-cms-extension",
     "description": "",
     "homepage": "https://peni4142.de",
@@ -13,7 +13,13 @@
     "autoload": {
         "psr-4": {
             "PeerNissen\\SmtpFinisher\\": "Classes/"
-        }
+        },
+        "classmap": [
+          "Vendor"
+        ]
+    },
+    "replace": {
+      "typo3-ter/smtp_finisher": "self.version"
     },
     "extra": {
         "typo3/cms": {
