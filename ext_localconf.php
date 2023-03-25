@@ -19,7 +19,6 @@ if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('form')) {
         module.tx_form {
             settings {
                 yamlConfigurations {
-                    281 = EXT:smtp_finisher/Configuration/service.yaml
                     311 = EXT:smtp_finisher/Configuration/Finishers/Smtp.yaml
                 }
             }
@@ -27,7 +26,6 @@ if (\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::isLoaded('form')) {
         plugin.tx_form {
             settings {
                 yamlConfigurations {
-                    281 = EXT:smtp_finisher/Configuration/service.yaml
                     311 = EXT:smtp_finisher/Configuration/Finishers/Smtp.yaml
                 }
             }

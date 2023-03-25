@@ -33,7 +33,7 @@ TYPO3:
                              identifier: 'smtpPort'
                              templateName: 'Inspector-TextEditor'
                              label: 'SMTP Port'
-                             propertyPath: 'options.customField1'
+                             propertyPath: 'options.smtpPort'
                              propertyValidators:
                                10: 'NotEmpty'
                            120:
@@ -41,7 +41,7 @@ TYPO3:
                              identifier: 'smtpServer'
                              templateName: 'Inspector-TextEditor'
                              label: 'SMTP Server'
-                             propertyPath: 'options.customField2'
+                             propertyPath: 'options.smtpServer'
                              propertyValidators:
                                10: 'NotEmpty'
                            130:
@@ -49,7 +49,7 @@ TYPO3:
                              identifier: 'username'
                              templateName: 'Inspector-TextEditor'
                              label: 'Username'
-                             propertyPath: 'options.customField3'
+                             propertyPath: 'options.username'
                              propertyValidators:
                                10: 'NotEmpty'
                            140:
@@ -57,7 +57,7 @@ TYPO3:
                              identifier: 'password'
                              templateName: 'Inspector-TextEditor'
                              label: 'Password'
-                             propertyPath: 'options.customField4'
+                             propertyPath: 'options.password'
                              propertyValidators:
                                10: 'NotEmpty'
                            150:
@@ -65,7 +65,7 @@ TYPO3:
                              identifier: 'senderAddress'
                              templateName: 'Inspector-TextEditor'
                              label: 'Sender Address'
-                             propertyPath: 'options.customField5'
+                             propertyPath: 'options.senderAddress'
                              propertyValidators:
                                10: 'NotEmpty'
                            160:
@@ -73,7 +73,7 @@ TYPO3:
                              identifier: 'subject'
                              templateName: 'Inspector-TextEditor'
                              label: 'Subject'
-                             propertyPath: 'options.customField6'
+                             propertyPath: 'options.subject'
                              propertyValidators:
                                10: 'NotEmpty'
                            170:
@@ -81,7 +81,7 @@ TYPO3:
                              identifier: 'htmlBody'
                              templateName: 'Inspector-TextEditor'
                              label: 'HTML Body'
-                             propertyPath: 'options.customField7'
+                             propertyPath: 'options.htmlBody'
                              propertyValidators:
                                10: 'NotEmpty'
                            180:
@@ -89,7 +89,7 @@ TYPO3:
                              identifier: 'altBody'
                              templateName: 'Inspector-TextEditor'
                              label: 'Alt Body'
-                             propertyPath: 'options.customField8'
+                             propertyPath: 'options.altBody'
                              propertyValidators:
                                10: 'NotEmpty'
                            190:
@@ -97,7 +97,7 @@ TYPO3:
                              identifier: 'recipent'
                              templateName: 'Inspector-TextEditor'
                              label: 'Recipent'
-                             propertyPath: 'options.customField9'
+                             propertyPath: 'options.recipent'
                              propertyValidators:
                                10: 'NotEmpty'
                            220:
@@ -112,7 +112,7 @@ TYPO3:
                                20: 'FormElementIdentifierWithinCurlyBracesInclusive'
           finishersDefinition:
             SmtpFinisher:
-              implementationClassName: 'peni4142\smtp_finisher\Domain\Finishers\SmtpFinisher'
+              implementationClassName: PeerNissen\SmtpFinisher\Domain\Finishers\SmtpFinisher
               formEditor:
                 iconIdentifier: form-finisher
                 label: 'SMTP Finisher'

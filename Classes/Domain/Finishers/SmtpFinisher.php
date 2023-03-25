@@ -1,42 +1,39 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 
-namespace peni4142\smtp_finisher\Domain\SmtpFinisher;
+namespace PeerNissen\SmtpFinisher\Domain\Finishers;
 
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
 use TYPO3\CMS\Form\Domain\Finishers\AbstractFinisher;
 
 
 final class SmtpFinisher extends AbstractFinisher
 {
+	protected PHPMailer $phpMailerLib;
 
-	protected $phpMailerLib;
+    protected $shortFinisherIdentifier = 'smtp';
 
-	public function __construct(\Vendor\PHPMailer $phpMailerLib)
-	{
-		$this->phpMailerLib = $phpMailerLib;
-	}
-
-	protected $shortFinisherIdentifier = 'smtp';
-
-	public function executeInternal() : void{
-		$senderOptoins = $this->parseOptions("sender");
-		$mailer = new $this->phpMailerLib->PHPMailer();
+    /**
+     * @throws Exception
+     */
+    public function executeInternal() : void
+    {
+        $mailer = $this->phpMailerLib = new PHPMailer();
 
 		$mailer->isSMTP();
 		$mailer->SMTPAuth =true;
 		$mailer->SMTPSecure = $this->phpMailerLib::ENCRYPTION_STARTTLS;
 		
-		$mailer->Port = $senderOptoins["smtpPort"];
-		$mailer->Host = $senderOptoins["smtpServer"];
+		$mailer->Port = (int)$this->options["smtpPort"];
+		$mailer->Host = $this->options["smtpServer"];
 
-		$mailer->Username = $senderOptoins["username"];
-		$mailer->Password = $senderOptoins["password"];
+		$mailer->Username = $this->options["username"];
+		$mailer->Password = $this->options["password"];
 
-		$mailer->setFrom($senderOptoins["senderAddress"]) ;
+		$mailer->setFrom($this->options["senderAddress"]) ;
+        $mailer->addAddress($this->parseOption("recipent"));
 
-
-		foreach($this->parseOptions("recipents") as $recipent){
-			$mailer->addAddress($recipent);
-		}
 
 		$mailer->isHTML();
 		$mailer->Subject = "Hello, World!";
@@ -46,5 +43,3 @@ final class SmtpFinisher extends AbstractFinisher
 		$mailer->Send(); 
 	}
 }
-
-?>
