@@ -4,9 +4,8 @@ services:
     autoconfigure: true
     public: false
 
-  peni4142\smtp_finisher\:
+  PeerNissen\SmtpFinisher\:
     resource: '../Classes/*'
 
-  peni4142\smtp_finisher\Finisher\SmtpFinisher:
+  PeerNissen\SmtpFinisher\Domain\Finishers\SmtpFinisher:
     public: true
-
