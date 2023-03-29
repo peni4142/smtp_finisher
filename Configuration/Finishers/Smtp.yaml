@@ -74,22 +74,25 @@ TYPO3:
                              templateName: 'Inspector-TextEditor'
                              label: 'Subject'
                              propertyPath: 'options.subject'
+                             enableFormelementSelectionButton: true
                              propertyValidators:
                                10: 'NotEmpty'
                            170:
                              # add a field defined as a TextEditor
                              identifier: 'htmlBody'
-                             templateName: 'Inspector-TextEditor'
+                             templateName: 'Inspector-TextareaEditor'
                              label: 'HTML Body'
                              propertyPath: 'options.htmlBody'
+                             enableFormelementSelectionButton: true
                              propertyValidators:
                                10: 'NotEmpty'
                            180:
                              # add a field defined as a TextEditor
                              identifier: 'altBody'
-                             templateName: 'Inspector-TextEditor'
+                             templateName: 'Inspector-TextareaEditor'
                              label: 'Alt Body'
                              propertyPath: 'options.altBody'
+                             enableFormelementSelectionButton: true
                              propertyValidators:
                                10: 'NotEmpty'
                            190:
@@ -98,14 +101,6 @@ TYPO3:
                              templateName: 'Inspector-TextEditor'
                              label: 'Recipent'
                              propertyPath: 'options.recipent'
-                             propertyValidators:
-                               10: 'NotEmpty'
-                           220:
-                             # add another TextEditor
-                             identifier: 'email'
-                             templateName: 'Inspector-TextEditor'
-                             label: 'Subscribers email'
-                             propertyPath: 'options.email'
                              enableFormelementSelectionButton: true
                              propertyValidators:
                                10: 'NotEmpty'

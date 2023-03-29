@@ -21,25 +21,36 @@ final class SmtpFinisher extends AbstractFinisher
     {
         $mailer = $this->phpMailerLib = new PHPMailer();
 
-		$mailer->isSMTP();
-		$mailer->SMTPAuth =true;
-		$mailer->SMTPSecure = $this->phpMailerLib::ENCRYPTION_STARTTLS;
-		
-		$mailer->Port = (int)$this->options["smtpPort"];
-		$mailer->Host = $this->options["smtpServer"];
+				$mailer->isSMTP();
+				$mailer->SMTPAuth =true;
+				$mailer->SMTPSecure = $this->phpMailerLib::ENCRYPTION_STARTTLS;
+				
+				$mailer->Port = (int)$this->options["smtpPort"];
+				$mailer->Host = $this->options["smtpServer"];
 
-		$mailer->Username = $this->options["username"];
-		$mailer->Password = $this->options["password"];
+				$mailer->Username = $this->options["username"];
+				$mailer->Password = $this->options["password"];
 
-		$mailer->setFrom($this->options["senderAddress"]) ;
-        $mailer->addAddress($this->parseOption("recipent"));
+				$mailer->setFrom($this->options["senderAddress"]) ;
+				$mailer->addAddress($this->parseText($this->options["recipent"]));
 
+				$mailer->isHTML();
+				$mailer->Subject = $this->parseText($this->options["subject"]);
+				$mailer->Body = $this->parseText($this->options["htmlBody"]);
+				$mailer->AltBody = $this->parseText($this->options["altBody"]);
 
-		$mailer->isHTML();
-		$mailer->Subject = "Hello, World!";
-		$mailer->Body = "Hi Test Email";
-		$mailer->AltBody = "Hi Test Email";
+				$mailer->Send(); 
+		}
 
-		$mailer->Send(); 
-	}
+		private function parseText(string $s) : string
+		{
+			  $result = $s;
+        $formValues = $this->finisherContext->getFormValues();
+        $keys = array_keys($formValues);
+        foreach($keys as $key)
+        {
+          $result = str_replace("{".$key."}", $formValues[$key], $result);
+        }
+        return $result;
+		}
 }
