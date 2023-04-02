@@ -113,7 +113,9 @@ final class SmtpFinisher extends AbstractFinisher
         $mailer->Password = $this->options["password"];
 
         $mailer->setFrom($this->options["senderAddress"]);
-        $mailer->addAddress($this->parseText($this->options["recipent"]));
+        foreach ($this->parseOption('recipients') as $recipientEmail => $recipientName) {
+            $mailer->addAddress($recipientEmail, $recipientName);
+        }
 
         $mailer->isHTML();
         $mailer->Subject = $this->parseText($this->options["subject"]);

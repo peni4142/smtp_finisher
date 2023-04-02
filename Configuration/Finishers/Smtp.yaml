@@ -99,15 +99,23 @@ TYPO3:
                           propertyValidators:
                             10: 'NotEmpty'
                         190:
-                          # add a field defined as a TextEditor
-                          identifier: 'recipent'
-                          templateName: 'Inspector-TextEditor'
-                          label: 'Recipent'
-                          propertyPath: 'options.recipent'
-                          enableFormelementSelectionButton: true
+                          # recipients as select options
+                          identifier: 'recipients'
+                          templateName: Inspector-PropertyGridEditor
+                          label: 'recipients'
+                          propertyPath: options.recipients
                           propertyValidators:
-                            10: 'NotEmpty'
-                            20: 'FormElementIdentifierWithinCurlyBracesInclusive'
+                            10: NotEmpty
+                          fieldExplanationText: formEditor.elements.Form.finisher.EmailToReceiver.editor.recipients.fieldExplanationText
+                          isSortable: true
+                          enableAddRow: true
+                          enableDeleteRow: true
+                          useLabelAsFallbackValue: false
+                          gridColumns:
+                            - name: value
+                              title: formEditor.elements.Form.finisher.EmailToSender.editor.recipients.gridColumns.value.title
+                            - name: label
+                              title: formEditor.elements.Form.finisher.EmailToSender.editor.recipients.gridColumns.label.title
                         200:
                           # add a field defined as a TextEditor
                           identifier: 'notifying'
