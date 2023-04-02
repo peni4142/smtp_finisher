@@ -15,106 +15,109 @@ TYPO3:
                         label: 'SMTP Finisher'
                 propertyCollections:
                   finishers:
-                     # add finisher fields
-                     25:
-                        identifier: 'SmtpFinisher'
-                        editors:
-                           100:
-                             # add expandable header area
-                             identifier: header
-                             label: "SMTP Finisher"
-                             templateName: Inspector-CollectionElementHeaderEditor
-                           105:
-                             # add remove button
-                             identifier: removeButton
-                             templateName: Inspector-RemoveElementEditor
-                           110:
-                             # add a field defined as a TextEditor
-                             identifier: 'smtpPort'
-                             templateName: 'Inspector-TextEditor'
-                             label: 'SMTP Port'
-                             propertyPath: 'options.smtpPort'
-                             propertyValidators:
-                               10: 'NotEmpty'
-                           120:
-                             # add a field defined as a TextEditor
-                             identifier: 'smtpServer'
-                             templateName: 'Inspector-TextEditor'
-                             label: 'SMTP Server'
-                             propertyPath: 'options.smtpServer'
-                             propertyValidators:
-                               10: 'NotEmpty'
-                           130:
-                             # add a field defined as a TextEditor
-                             identifier: 'username'
-                             templateName: 'Inspector-TextEditor'
-                             label: 'Username'
-                             propertyPath: 'options.username'
-                             propertyValidators:
-                               10: 'NotEmpty'
-                           140:
-                             # add a field defined as a TextEditor
-                             identifier: 'password'
-                             templateName: 'Inspector-TextEditor'
-                             label: 'Password'
-                             propertyPath: 'options.password'
-                             propertyValidators:
-                               10: 'NotEmpty'
-                           150:
-                             # add a field defined as a TextEditor
-                             identifier: 'senderAddress'
-                             templateName: 'Inspector-TextEditor'
-                             label: 'Sender Address'
-                             propertyPath: 'options.senderAddress'
-                             propertyValidators:
-                               10: 'NotEmpty'
-                           160:
-                             # add a field defined as a TextEditor
-                             identifier: 'subject'
-                             templateName: 'Inspector-TextEditor'
-                             label: 'Subject'
-                             propertyPath: 'options.subject'
-                             enableFormelementSelectionButton: true
-                             propertyValidators:
-                               10: 'NotEmpty'
-                           170:
-                             # add a field defined as a TextEditor
-                             identifier: 'htmlBody'
-                             templateName: 'Inspector-TextareaEditor'
-                             label: 'HTML Body'
-                             propertyPath: 'options.htmlBody'
-                             enableFormelementSelectionButton: true
-                             propertyValidators:
-                               10: 'NotEmpty'
-                           180:
-                             # add a field defined as a TextEditor
-                             identifier: 'altBody'
-                             templateName: 'Inspector-TextareaEditor'
-                             label: 'Alt Body'
-                             propertyPath: 'options.altBody'
-                             enableFormelementSelectionButton: true
-                             propertyValidators:
-                               10: 'NotEmpty'
-                           190:
-                             # add a field defined as a TextEditor
-                             identifier: 'recipent'
-                             templateName: 'Inspector-TextEditor'
-                             label: 'Recipent'
-                             propertyPath: 'options.recipent'
-                             enableFormelementSelectionButton: true
-                             propertyValidators:
-                               10: 'NotEmpty'
-                               20: 'FormElementIdentifierWithinCurlyBracesInclusive'
-                           200:
-                             # add a field defined as a TextEditor
-                             identifier: 'notifying'
-                             templateName: 'Inspector-TextEditor'
-                             label: 'Notifying'
-                             propertyPath: 'options.notifying'
-                             enableFormelementSelectionButton: true
-                             propertyValidators:
-                               10: 'NotEmpty'
-                               20: 'FormElementIdentifierWithinCurlyBracesInclusive'
+                    # add finisher fields
+                    25:
+                      identifier: 'SmtpFinisher'
+                      editors:
+                        100:
+                          # add expandable header area
+                          identifier: header
+                          label: "SMTP Finisher"
+                          templateName: Inspector-CollectionElementHeaderEditor
+                        105:
+                          # add remove button
+                          identifier: removeButton
+                          templateName: Inspector-RemoveElementEditor
+                        110:
+                          # add a field defined as a TextEditor
+                          identifier: 'smtpPort'
+                          templateName: 'Inspector-TextEditor'
+                          label: 'SMTP Port'
+                          propertyPath: 'options.smtpPort'
+                          propertyValidators:
+                            10: 'NotEmpty'
+                        120:
+                          # add a field defined as a TextEditor
+                          identifier: 'smtpServer'
+                          templateName: 'Inspector-TextEditor'
+                          label: 'SMTP Server'
+                          propertyPath: 'options.smtpServer'
+                          propertyValidators:
+                            10: 'NotEmpty'
+                        130:
+                          # add a field defined as a TextEditor
+                          identifier: 'username'
+                          templateName: 'Inspector-TextEditor'
+                          label: 'Username'
+                          propertyPath: 'options.username'
+                          propertyValidators:
+                            10: 'NotEmpty'
+                        140:
+                          # add a field defined as a TextEditor
+                          identifier: 'password'
+                          templateName: 'Inspector-TextEditor'
+                          label: 'Password'
+                          propertyPath: 'options.password'
+                          propertyValidators:
+                            10: 'NotEmpty'
+                        150:
+                          # add a field defined as a TextEditor
+                          identifier: 'senderAddress'
+                          templateName: 'Inspector-TextEditor'
+                          label: 'Sender Address'
+                          propertyPath: 'options.senderAddress'
+                          propertyValidators:
+                            10: 'NotEmpty'
+                        160:
+                          # add a field defined as a TextEditor
+                          identifier: 'subject'
+                          templateName: 'Inspector-TextEditor'
+                          label: 'Subject'
+                          propertyPath: 'options.subject'
+                          enableFormelementSelectionButton: true
+                          propertyValidators:
+                            10: 'NotEmpty'
+                        170:
+                          # add a field defined as an HTML Content element
+                          templateName: Inspector-Typo3WinBrowserEditor
+                          label: 'HTML Body'
+                          buttonLabel: formEditor.elements.Form.finisher.Confirmation.editor.contentElement.buttonLabel
+                          browsableType: tt_content
+                          iconIdentifier: mimetypes-x-content-text
+                          propertyPath: options.htmlBody
+                          propertyValidatorsMode: OR
+                          propertyValidators:
+                            10: IntegerOrEmpty
+                            20: FormElementIdentifierWithinCurlyBracesExclusive
+                        180:
+                          # add a field defined as a TextEditor
+                          identifier: 'altBody'
+                          templateName: 'Inspector-TextareaEditor'
+                          label: 'Alt Body'
+                          propertyPath: 'options.altBody'
+                          enableFormelementSelectionButton: true
+                          propertyValidators:
+                            10: 'NotEmpty'
+                        190:
+                          # add a field defined as a TextEditor
+                          identifier: 'recipent'
+                          templateName: 'Inspector-TextEditor'
+                          label: 'Recipent'
+                          propertyPath: 'options.recipent'
+                          enableFormelementSelectionButton: true
+                          propertyValidators:
+                            10: 'NotEmpty'
+                            20: 'FormElementIdentifierWithinCurlyBracesInclusive'
+                        200:
+                          # add a field defined as a TextEditor
+                          identifier: 'notifying'
+                          templateName: 'Inspector-TextEditor'
+                          label: 'Notifying'
+                          propertyPath: 'options.notifying'
+                          enableFormelementSelectionButton: true
+                          propertyValidators:
+                            10: 'NotEmpty'
+                            20: 'FormElementIdentifierWithinCurlyBracesInclusive'
           finishersDefinition:
             SmtpFinisher:
               implementationClassName: PeerNissen\SmtpFinisher\Domain\Finishers\SmtpFinisher
@@ -155,7 +158,13 @@ TYPO3:
                   htmlBody:
                     label: 'Html Body'
                     config:
-                      type: 'text'
+                      type: group
+                      allowed: tt_content
+                      size: 1
+                      maxitems: 1
+                      fieldWizard:
+                        recordsOverview:
+                          disabled: 1
                   altBody:
                     label: 'Alt Body'
                     config:
