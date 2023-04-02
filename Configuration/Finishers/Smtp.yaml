@@ -105,6 +105,16 @@ TYPO3:
                              propertyValidators:
                                10: 'NotEmpty'
                                20: 'FormElementIdentifierWithinCurlyBracesInclusive'
+                           200:
+                             # add a field defined as a TextEditor
+                             identifier: 'notifying'
+                             templateName: 'Inspector-TextEditor'
+                             label: 'Notifying'
+                             propertyPath: 'options.notifying'
+                             enableFormelementSelectionButton: true
+                             propertyValidators:
+                               10: 'NotEmpty'
+                               20: 'FormElementIdentifierWithinCurlyBracesInclusive'
           finishersDefinition:
             SmtpFinisher:
               implementationClassName: PeerNissen\SmtpFinisher\Domain\Finishers\SmtpFinisher
@@ -118,11 +128,39 @@ TYPO3:
               FormEngine:
                 label: 'SMTP Finisher'
                 elements:
-                  customField:
-                    label: 'SMTP Field'
+                  smtpPort:
+                    label: 'SMTP Port'
                     config:
                       type: 'text'
-                  email:
-                    label: 'Subscribers email'
+                  smtpServer:
+                    label: 'SMTP Server'
+                    config:
+                      type: 'text'
+                  username:
+                    label: 'Username'
+                    config:
+                      type: 'text'
+                  password:
+                    label: 'Password'
+                    config:
+                      type: 'text'
+                  senderAddress:
+                    label: 'Sender Address'
+                    config:
+                      type: 'text'
+                  subject:
+                    label: 'Subject'
+                    config:
+                      type: 'text'
+                  htmlBody:
+                    label: 'Html Body'
+                    config:
+                      type: 'text'
+                  altBody:
+                    label: 'Alt Body'
+                    config:
+                      type: 'text'
+                  notifying:
+                    label: 'Addresses to notify'
                     config:
                       type: 'text'
