@@ -119,13 +119,21 @@ TYPO3:
                         200:
                           # add a field defined as a TextEditor
                           identifier: 'notifying'
-                          templateName: 'Inspector-TextEditor'
+                          templateName: Inspector-PropertyGridEditor
                           label: 'Notifying'
                           propertyPath: 'options.notifying'
-                          enableFormelementSelectionButton: true
                           propertyValidators:
                             10: 'NotEmpty'
-                            20: 'FormElementIdentifierWithinCurlyBracesInclusive'
+                          fieldExplanationText: formEditor.elements.Form.finisher.EmailToReceiver.editor.recipients.fieldExplanationText
+                          isSortable: true
+                          enableAddRow: true
+                          enableDeleteRow: true
+                          useLabelAsFallbackValue: false
+                          gridColumns:
+                            - name: value
+                              title: formEditor.elements.Form.finisher.EmailToSender.editor.recipients.gridColumns.value.title
+                            - name: label
+                              title: formEditor.elements.Form.finisher.EmailToSender.editor.recipients.gridColumns.label.title
           finishersDefinition:
             SmtpFinisher:
               implementationClassName: PeerNissen\SmtpFinisher\Domain\Finishers\SmtpFinisher
@@ -178,6 +186,24 @@ TYPO3:
                     config:
                       type: 'text'
                   notifying:
-                    label: 'Addresses to notify'
-                    config:
-                      type: 'text'
+                    title: Notifying List
+                    type: array
+                    section: true
+                    sectionItemKey: email
+                    sectionItemValue: name
+                    el:
+                      _arrayContainer:
+                        type: array
+                        title: arrayContainer Title
+                        el:
+                          email:
+                            TCEforms:
+                              label: Email
+                              config:
+                                type: input
+                                eval: 'required,email'
+                          name:
+                            TCEforms:
+                              label: Name
+                              config:
+                                type: input

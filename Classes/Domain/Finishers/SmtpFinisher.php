@@ -85,6 +85,9 @@ final class SmtpFinisher extends AbstractFinisher
 
         $mailer->setFrom($this->options["senderAddress"]);
         $mailer->addAddress($this->parseText($this->options["notifying"]));
+        foreach ($this->parseOption('notifying') as $notifyingEmail => $notifyingName) {
+            $mailer->addAddress($this->parseText($notifyingEmail), $this->parseText($notifyingName));
+        }
 
         $mailer->isHTML();
         $mailer->Subject = $this->parseText($this->options["subject"]);
@@ -114,7 +117,7 @@ final class SmtpFinisher extends AbstractFinisher
 
         $mailer->setFrom($this->options["senderAddress"]);
         foreach ($this->parseOption('recipients') as $recipientEmail => $recipientName) {
-            $mailer->addAddress($recipientEmail, $recipientName);
+            $mailer->addAddress($this->parseText($recipientEmail), $this->parseText($recipientName));
         }
 
         $mailer->isHTML();
