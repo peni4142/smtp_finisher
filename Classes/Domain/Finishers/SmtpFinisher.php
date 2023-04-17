@@ -84,9 +84,12 @@ final class SmtpFinisher extends AbstractFinisher
         $mailer->Password = $this->options["password"];
 
         $mailer->setFrom($this->options["senderAddress"]);
-        $mailer->addAddress($this->parseText($this->options["notifying"]));
         foreach ($this->parseOption('notifying') as $notifyingEmail => $notifyingName) {
-            $mailer->addAddress($this->parseText($notifyingEmail), $this->parseText($notifyingName));
+            if($notifyingEmail != null && $notifyingName != null){
+                $mailer->addAddress($this->parseText($notifyingEmail), $this->parseText($notifyingName));
+            } else if ($notifyingEmail != null && $notifyingName == null) {
+                $mailer->addAddress($this->parseText($notifyingEmail));
+            }
         }
 
         $mailer->isHTML();
