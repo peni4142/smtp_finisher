@@ -9,3 +9,9 @@ services:
 
   PeerNissen\SmtpFinisher\Domain\Finishers\SmtpFinisher:
     public: true
+
+  PeerNissen\SmtpFinisher\EventListener\DataStructureIdentifierListener:
+    tags:
+      - name: event.listener
+        identifier: 'smtp-finisher/modify-data-structure'
+        method: 'modifyDataStructure'

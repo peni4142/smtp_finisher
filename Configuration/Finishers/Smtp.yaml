@@ -3,6 +3,77 @@ TYPO3:
     Form:
       prototypes:
         standard:
+          finishersDefinition:
+            SmtpFinisher:
+              implementationClassName: PeerNissen\SmtpFinisher\Domain\Finishers\SmtpFinisher
+              formEditor:
+                iconIdentifier: form-finisher
+                label: 'SMTP Finisher'
+                predefinedDefaults:
+                  options:
+                    smtpPort: '587'
+              # displayed when overriding finisher settings
+              FormEngine:
+                label: 'SMTP Finisher'
+                elements:
+                  smtpPort:
+                    label: 'SMTP Port'
+                    config:
+                      type: 'text'
+                  smtpServer:
+                    label: 'SMTP Server'
+                    config:
+                      type: 'text'
+                  username:
+                    label: 'Username'
+                    config:
+                      type: 'text'
+                  password:
+                    label: 'Password'
+                    config:
+                      type: 'text'
+                  senderAddress:
+                    label: 'Sender Address'
+                    config:
+                      type: 'text'
+                  subject:
+                    label: 'Subject'
+                    config:
+                      type: 'text'
+                  htmlBody:
+                    label: 'Html Body'
+                    config:
+                      type: group
+                      allowed: tt_content
+                      size: 1
+                      maxitems: 1
+                      fieldWizard:
+                        recordsOverview:
+                          disabled: 1
+                  altBody:
+                    label: 'Alt Body'
+                    config:
+                      type: 'text'
+                  notifying:
+                    title: Notifying List
+                    type: array
+                    section: true
+                    sectionItemKey: email
+                    sectionItemValue: name
+                    el:
+                      _arrayContainer:
+                        type: array
+                        title: arrayContainer Title
+                        el:
+                          email:
+                            label: Email
+                            config:
+                              type: input
+                              eval: 'required,email'
+                          name:
+                            label: Name
+                            config:
+                              type: input
           formElementsDefinition:
             Form:
               formEditor:
@@ -134,76 +205,3 @@ TYPO3:
                               title: formEditor.elements.Form.finisher.EmailToSender.editor.recipients.gridColumns.value.title
                             - name: label
                               title: formEditor.elements.Form.finisher.EmailToSender.editor.recipients.gridColumns.label.title
-          finishersDefinition:
-            SmtpFinisher:
-              implementationClassName: PeerNissen\SmtpFinisher\Domain\Finishers\SmtpFinisher
-              formEditor:
-                iconIdentifier: form-finisher
-                label: 'SMTP Finisher'
-                predefinedDefaults:
-                  options:
-                    smtpPort: '587'
-              # displayed when overriding finisher settings
-              FormEngine:
-                label: 'SMTP Finisher'
-                elements:
-                  smtpPort:
-                    label: 'SMTP Port'
-                    config:
-                      type: 'text'
-                  smtpServer:
-                    label: 'SMTP Server'
-                    config:
-                      type: 'text'
-                  username:
-                    label: 'Username'
-                    config:
-                      type: 'text'
-                  password:
-                    label: 'Password'
-                    config:
-                      type: 'text'
-                  senderAddress:
-                    label: 'Sender Address'
-                    config:
-                      type: 'text'
-                  subject:
-                    label: 'Subject'
-                    config:
-                      type: 'text'
-                  htmlBody:
-                    label: 'Html Body'
-                    config:
-                      type: group
-                      allowed: tt_content
-                      size: 1
-                      maxitems: 1
-                      fieldWizard:
-                        recordsOverview:
-                          disabled: 1
-                  altBody:
-                    label: 'Alt Body'
-                    config:
-                      type: 'text'
-                  notifying:
-                    title: Notifying List
-                    type: array
-                    section: true
-                    sectionItemKey: email
-                    sectionItemValue: name
-                    el:
-                      _arrayContainer:
-                        type: array
-                        title: arrayContainer Title
-                        el:
-                          email:
-                            TCEforms:
-                              label: Email
-                              config:
-                                type: input
-                                eval: 'required,email'
-                          name:
-                            TCEforms:
-                              label: Name
-                              config:
-                                type: input

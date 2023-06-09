@@ -106,7 +106,7 @@ final class SmtpFinisher extends AbstractFinisher
      */
     private function confirmInput(): void
     {
-        $mailer = $this->phpMailerLib = new PHPMailer();
+		$mailer = $this->phpMailerLib = new PHPMailer();
 
         $mailer->isSMTP();
         $mailer->SMTPAuth = true;
