@@ -136,7 +136,7 @@ final class SmtpFinisher extends AbstractFinisher
     private function getNotificationMessage(): string
     {
         $formValues = $this->finisherContext->getFormValues();
-        return $this->options["htmlNotificationBody"] . "Jemand hat eine Anfrage gestellt:<br />" . $this->arrayToHtml($formValues);
+        return json_encode($this->cObj->data) . $this->options["htmlNotificationBody"] . "Jemand hat eine Anfrage gestellt:<br />" . $this->arrayToHtml($formValues);
     }
 
     private function arrayToHtml($array): string
