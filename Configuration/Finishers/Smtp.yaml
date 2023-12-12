@@ -74,6 +74,16 @@ TYPO3:
                             label: Name
                             config:
                               type: input
+                  htmlNotificationBody:
+                    label: 'Html Notification Body'
+                    config:
+                      type: group
+                      allowed: tt_content
+                      size: 1
+                      maxitems: 1
+                      fieldWizard:
+                        recordsOverview:
+                          disabled: 1
           formElementsDefinition:
             Form:
               formEditor:
