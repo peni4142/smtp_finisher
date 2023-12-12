@@ -205,3 +205,17 @@ TYPO3:
                               title: formEditor.elements.Form.finisher.EmailToSender.editor.recipients.gridColumns.value.title
                             - name: label
                               title: formEditor.elements.Form.finisher.EmailToSender.editor.recipients.gridColumns.label.title
+                        210:
+                          # add a field defined as an HTML Content element
+                          templateName: Inspector-Typo3WinBrowserEditor
+                          label: 'HTML Notification Body'
+                          buttonLabel: formEditor.elements.Form.finisher.Confirmation.editor.contentElement.buttonLabel
+                          browsableType: tt_content
+                          iconIdentifier: mimetypes-x-content-text
+                          propertyPath: options.htmlNotificationBody
+                          propertyValidatorsMode: OR
+                          propertyValidators:
+                            10: IntegerOrEmpty
+                            20: FormElementIdentifierWithinCurlyBracesExclusive
+
+
