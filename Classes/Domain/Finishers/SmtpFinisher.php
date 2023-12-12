@@ -136,7 +136,7 @@ final class SmtpFinisher extends AbstractFinisher
     private function getNotificationMessage(): string
     {
         $formValues = $this->finisherContext->getFormValues();
-        return json_encode($this->cObj->data) . $this->options["htmlNotificationBody"] . "Jemand hat eine Anfrage gestellt:<br />" . $this->arrayToHtml($formValues);
+        return json_encode($this->getContentByUid($this->options["htmlNotificationBody"])) . "Jemand hat eine Anfrage gestellt:<br />" . $this->arrayToHtml($formValues);
     }
 
     private function arrayToHtml($array): string
@@ -226,6 +226,18 @@ final class SmtpFinisher extends AbstractFinisher
             $content = str_replace("{" . $key . "}", $this->strToValue($this->getValueFromXdimensional($formValues, $key)), $content);
         }
 
+        return $content;
+    }
+
+    private function getContentByUid($uid)
+    {
+        // Configurieren
+        $conf['tables'] = 'tt_content';
+        $conf['conf.']['tt_content'] = '< tt_content';
+        $conf['source'] = $uid; //"tt_content_".$uid
+        $conf['dontCheckPid'] = '1';
+        // content holen
+        $content = $this->cObj->cObjGetSingle('RECORDS', $conf);
         return $content;
     }
 }
