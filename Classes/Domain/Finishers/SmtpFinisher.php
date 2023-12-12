@@ -85,6 +85,9 @@ final class SmtpFinisher extends AbstractFinisher
         $mailer->Username = $this->options["username"];
         $mailer->Password = $this->options["password"];
 
+        $mailer->CharSet = "UTF-8";
+        $mailer->Encoding = 'base64';
+
         $mailer->setFrom($this->options["senderAddress"]);
         foreach ($this->parseOption('notifying') as $notifyingEmail => $notifyingName) {
             if ($notifyingEmail != null && $notifyingName != null) {
@@ -119,6 +122,9 @@ final class SmtpFinisher extends AbstractFinisher
 
         $mailer->Username = $this->options["username"];
         $mailer->Password = $this->options["password"];
+
+        $mailer->CharSet = "UTF-8";
+        $mailer->Encoding = 'base64';
 
         $mailer->setFrom($this->options["senderAddress"]);
         foreach ($this->parseOption('recipients') as $recipientEmail => $recipientName) {
